@@ -1,3 +1,5 @@
+![[ONCA Logo](assets/ONCA_Logo.jpg)](https://github.com/MatheusAguiar3/ONCA---Open-source-Network-Crawler-for-Assets/blob/main/assets/ONCA_logo.jpg)
+
 
 # 🐾 ONÇA - [Open-source Network Crawler for Assets]
 
