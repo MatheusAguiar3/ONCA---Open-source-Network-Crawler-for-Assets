@@ -1,5 +1,5 @@
-![[ONÇA - Open-source Network Crawler for Assets.jpg]]
-# 🐾 **ONÇA - [Open-source Network Crawler for Assets]
+
+# 🐾 ONÇA - [Open-source Network Crawler for Assets]
 
 ## 📌 **Visão Geral**
 
@@ -28,11 +28,11 @@ ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para aju
     
 - Git (opcional)    
 # Clone o repositório (opcional)
-`git clone https://github.com/seu-usuario/ONCA.git
-`cd ONCA
+`git clone https://github.com/seu-usuario/ONCA.git`
+`cd ONCA`
 
 # Instale as dependências
-`pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ---
 
@@ -42,25 +42,25 @@ ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para aju
 
 bash
 
-`python onca.py -o exemplo.com
+`python onca.py -o exemplo.com`
 
 ### 2. Busca por palavra-chave (ex: "admin"):
 
 bash
 
-`python onca.py -o nubank.com.br -n admin -v
+`python onca.py -o nubank.com.br -n admin -v`
 
 ### 3. Usando fontes específicas (Google + DomainTools):
 
 bash
 
-`python onca.py -o alvo.com -c google domaintools
+`python onca.py -o alvo.com -c google domaintools`
 
 ### 4. Salvar resultados em CSV:
 
 bash
 
-`python onca.py -o alvo.com -a resultados.csv
+`python onca.py -o alvo.com -a resultados.csv`
 
 ---
 
@@ -103,7 +103,7 @@ Sim. Para evitar:
 
 bash
 
-`python onca.py -o alvo.com -n "admin login" -c google
+`python onca.py -o alvo.com -n "admin login" -c google`
 
 ### 3. "Não encontrei resultados. O que fazer?"
 
@@ -113,7 +113,7 @@ bash
     
     bash
     
-    `python onca.py -o alvo.com -c wayback
+    `python onca.py -o alvo.com -c wayback`
 
 ## 📬 **Contato**
 linkedin: https://www.linkedin.com/in/matheus-aguiar3/
