@@ -22,7 +22,7 @@ ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para aju
 
 ---
 
-## 🛠 **Instalação Fácil**
+##**Instalação Fácil**
 
 ### Pré-requisitos:
 
