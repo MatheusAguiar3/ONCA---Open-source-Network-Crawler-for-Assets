@@ -1,9 +1,9 @@
 ![[ONCA Logo](assets/ONCA_Logo.jpg)](https://github.com/MatheusAguiar3/ONCA---Open-source-Network-Crawler-for-Assets/blob/main/assets/ONCA_logo.jpg)
 
 
-# 🐾 ONÇA - [Open-source Network Crawler for Assets]
+#ONÇA - [Open-source Network Crawler for Assets]
 
-## 📌 **Visão Geral**
+##**Visão Geral**
 
 ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para ajudar profissionais de segurança e equipes de TI a mapear a superfície de ataque/estudo de seus sistemas. Com capacidade de identificar subdomínios, URLs públicas e recursos expostos, ideal para:
 
@@ -38,7 +38,7 @@ ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para aju
 
 ---
 
-## 🚀 **Como Usar (Exemplos Práticos)**
+##**Como Usar (Exemplos Práticos)**
 
 ### 1. Busca básica em um domínio:
 
@@ -66,7 +66,7 @@ bash
 
 ---
 
-## 🔧 **Argumentos Principais**
+##**Argumentos Principais**
 
 | Comando      | Descrição                           | Exemplo             |
 | ------------ | ----------------------------------- | ------------------- |
@@ -79,7 +79,7 @@ bash
 
 ---
 
-## 🌐 **Fontes de Busca Disponíveis**
+##**Fontes de Busca Disponíveis**
 
 | Fonte           | O que encontra?                  | Exemplo de uso   |
 | --------------- | -------------------------------- | ---------------- |
@@ -90,7 +90,7 @@ bash
 
 ---
 
-## ❓ **FAQ (Perguntas Frequentes)**
+##**FAQ (Perguntas Frequentes)**
 
 ### 1. "A ONCA pode ser bloqueada pelo Google?"
 
@@ -117,19 +117,19 @@ bash
     
     `python onca.py -o alvo.com -c wayback`
 
-## 📬 **Contato**
+##**Contato**
 linkedin: https://www.linkedin.com/in/matheus-aguiar3/
 
 x(twitter): https://x.com/_yaguarete
 
-Encontrou um bug? Quer sugerir uma melhoria?  
-Abra uma **issue** no GitHub  :)
+Quer sugerir uma melhoria?  
+Me chama no twitter(x) :)
 
-## ⚠️ Aviso Legal
+## Aviso Legal
 
 a [onça] é para **fins educacionais e de teste autorizado**.  
 **Não use** em sistemas sem permissão. O uso indevido é de inteira responsabilidade do usuário.
 
-## 🐆Sobre
+## Sobre
 
-projeto criado por **matheus aguiar** para auxiliar no mapeamento de superfície de aplicações web e estudos em cibersegurança.
+projeto criado por **yaguarete** para auxiliar no mapeamento de superfície de aplicações web e estudos em cibersegurança.
