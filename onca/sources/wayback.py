@@ -8,7 +8,12 @@ logger = logging.getLogger(__name__)
 
 
 def buscar_wayback(domain: str) -> set[str]:
-    """URLs históricas via Wayback Machine (CDX API)."""
+    """URLs históricas via Wayback Machine (CDX API).
+
+    O CDX retorna uma lista de listas. A primeira linha é o header.
+    O formato de cada linha é:
+        [timestamp, original, mimetype, statuscode, digest, length]
+    """
     try:
         session = setup_session()
         url = f"https://web.archive.org/cdx/search/cdx?url={domain}/*&output=json"
@@ -20,7 +25,9 @@ def buscar_wayback(domain: str) -> set[str]:
 
         urls = set()
         for item in response.json()[1:]:  # primeira linha é o header
-            u = sanitize_url(item[2])
+            if len(item) < 2:
+                continue
+            u = sanitize_url(item[1])  # item[1] = URL original
             if u:
                 urls.add(u)
         return urls
