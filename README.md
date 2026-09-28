@@ -1,135 +1,174 @@
 ![[ONCA Logo](assets/ONCA_Logo.jpg)](https://github.com/MatheusAguiar3/ONCA---Open-source-Network-Crawler-for-Assets/blob/main/assets/ONCA_logo.jpg)
 
 
-#ONÇA - [Open-source Network Crawler for Assets]
+# ONÇA - [Open-source Network Crawler for Assets]
 
-##**Visão Geral**
+    ██████╗  ███╗   ██╗ ██████╗  █████╗
+    ██╔══██╗ ████╗  ██║██╔════╝ ██╔══██╗
+    ██║  ██║ ██╔██╗ ██║██║      ███████║
+    ██║  ██║ ██║╚██╗██║██║      ██╔══██║
+    ██████╔╝ ██║ ╚████║╚██████╗ ██║  ██║
+    ╚═════╝  ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
+        [Open-source Network Crawler for Assets]
 
-ONÇA é uma ferramenta Python para descoberta de ativos web, projetada para ajudar profissionais de segurança e equipes de TI a mapear a superfície de ataque/estudo de seus sistemas. Com capacidade de identificar subdomínios, URLs públicas e recursos expostos, ideal para:
+## O que é
 
-- **Pentesters** e equipes de segurança
-    
-- **Bug bounty hunters**
-    
+ONÇA é uma ferramenta Python para descoberta de ativos web a partir de um
+domínio. Ela é útil para:
+
+- Pentesters e equipes de segurança mapeando superfície de ataque
+- Bug bounty hunters
 - Administradores de sistemas
+- Estudantes de cibersegurança
 
-- **estudantes de cibersegurança**
+**O que a ONÇA faz:**
 
+- Consulta Wayback Machine, Google e WHOIS/RDAP para encontrar URLs
+- Consulta crt.sh (e HackerTarget como fallback) para encontrar subdomínios
+- Filtra por palavra-chave
+- Salva resultados em texto ou JSON
+- Aplica filtro estrito de domínio
 
-✅ Integração com **DomainTools WHOIS**  
-✅ Busca por **palavras-chave específicas** (ex: "admin", "login")  
-✅ Suporte a **Wayback Machine, Google e crt.sh**
+**O que a ONÇA NÃO faz:**
 
----
+- Não faz varredura de portas
+- Não faz brute force de subdomínios
+- Não usa API oficial de nenhuma fonte (é scraping ou API pública)
+- Não garante cobertura completa
 
-##**Instalação Fácil**
+## O acrônimo ONÇA
 
-### Pré-requisitos:
+Os argumentos principais formam o nome da ferramenta:
 
-- Python 3.6+
-    
-- Git (opcional)    
-# Clone o repositório (opcional)
-`git clone https://github.com/seu-usuario/ONCA.git`
-`cd ONCA`
+| Letra | Flag | O que faz |
+|---|---|---|
+| **O** | `-o` | Domínio alvo (**O**brigatório) |
+| **N** | `-n` | Palavra-chave (**N**ome/filtro) |
+| **Ç** | `-c` | Fontes de busca (**C**hoice) |
+| **A** | `-a` | Arquivo de saída (**A**rquivo) |
 
-# Instale as dependências
-`pip install -r requirements.txt`
+`--strict`, `-v` e `--delay` são complementares e não entram no acrônimo.
 
----
+## Instalação
 
-##**Como Usar (Exemplos Práticos)**
+### Requisitos
 
-### 1. Busca básica em um domínio:
+- Python 3.10+
+- Git (opcional)
 
-bash
+### Passos
 
-`python onca.py -o exemplo.com`
+    git clone https://github.com/MatheusAguiar3/ONCA---Open-source-Network-Crawler-for-Assets.git
+    cd ONCA---Open-source-Network-Crawler-for-Assets
 
-### 2. Busca por palavra-chave (ex: "admin"):
+    python3 -m venv venv
+    source venv/bin/activate   # Linux/Mac
+    # venv\Scripts\activate    # Windows
 
-bash
+    pip install -e .
 
-`python onca.py -o nubank.com.br -n admin -v`
+## Uso
 
-### 3. Usando fontes específicas (Google + DomainTools):
+### Busca básica
 
-bash
+    python onca.py -o exemplo.com
 
-`python onca.py -o alvo.com -c google domaintools`
+### Busca por palavra-chave
 
-### 4. Salvar resultados em CSV:
+    python onca.py -o exemplo.com -n admin -v
 
-bash
+### Fontes específicas
 
-`python onca.py -o alvo.com -a resultados.csv`
+    python onca.py -o exemplo.com -c google whois
+    python onca.py -o exemplo.com -c crtsh
 
----
+### Salvar resultados
 
-##**Argumentos Principais**
+    python onca.py -o exemplo.com -c crtsh -a resultados.json
+    python onca.py -o exemplo.com -c crtsh -a resultados.txt
 
-| Comando      | Descrição                           | Exemplo             |
-| ------------ | ----------------------------------- | ------------------- |
-| `-o DOMÍNIO` | Domínio alvo (obrigatório)          | `-o site.com.br`    |
-| `-n PALAVRA` | Busca por palavra-chave             | `-n "painel admin"` |
-| `-c FONTES`  | Escolha fontes de busca             | `-c google wayback` |
-| `-a ARQUIVO` | Salva resultados em arquivo         | `-a resultados.txt` |
-| `--strict`   | Filtra apenas URLs do domínio exato | `--strict`          |
-| `-v`         | Modo detalhado (verbose)            | `-v`                |
+### Filtro estrito de domínio
 
----
+    python onca.py -o exemplo.com --strict
 
-##**Fontes de Busca Disponíveis**
+### Ajustar o delay entre fontes
 
-| Fonte           | O que encontra?                  | Exemplo de uso   |
-| --------------- | -------------------------------- | ---------------- |
-| **Google**      | URLs indexadas                   | `-c google`      |
-| **Wayback**     | Histórico de páginas             | `-c wayback`     |
-| **DomainTools** | Subdomínios, DNS e WHOIS         | `-c domaintools` |
-| **crt.sh**      | Subdomínios via certificados SSL | `-c crtsh`       |
+    python onca.py -o exemplo.com -c wayback google --delay 5
 
----
+### Comando instalado
 
-##**FAQ (Perguntas Frequentes)**
+Se você instalou com `pip install -e .`, pode usar o comando `onca` direto:
 
-### 1. "A ONCA pode ser bloqueada pelo Google?"
+    onca -o exemplo.com -c crtsh
 
-Sim. Para evitar:
+## Argumentos
 
-- Use delays (`DELAY = 5` no código)
-    
-- Combine fontes (`-c wayback crtsh`)
-    
+| Argumento | Descrição | Padrão | Obrigatório |
+|---|---|---|---|
+| `-o, --domain` | Domínio alvo | — | Sim |
+| `-n, --keyword` | Palavra-chave (substring) para filtrar | — | Não |
+| `-c, --sources` | Fontes: `wayback`, `google`, `whois`, `crtsh` | todas | Não |
+| `-a, --output` | Arquivo de saída (`.json` ou `.txt`) | stdout | Não |
+| `--strict` | Filtra apenas URLs do domínio exato | desligado | Não |
+| `-v, --verbose` | Log detalhado | desligado | Não |
+| `--delay` | Delay entre fontes em segundos | 3 | Não |
 
-### 2. "Como buscar painéis de administração?"
+## Fontes
 
-bash
+### Fontes de URL
 
-`python onca.py -o alvo.com -n "admin login" -c google`
+| Fonte | O que faz | Requer API key? | Observações |
+|---|---|---|---|
+| `wayback` | URLs históricas via Wayback Machine | Não | API pública (CDX) |
+| `google` | URLs indexadas via scraping | Não | Pode ser bloqueado; sujeito a ToS |
+| `whois` | Nameservers via WHOIS/RDAP | Não | `python-whois` + fallback `rdap.org` |
 
-### 3. "Não encontrei resultados. O que fazer?"
+### Fontes de subdomínio
 
-- Tente variações: `"painel"`, `"sistema"`, `"acesso restrito"`
-    
-- Verifique se o domínio está indexado:
-    
-    bash
-    
-    `python onca.py -o alvo.com -c wayback`
+| Fonte | O que faz | Requer API key? | Observações |
+|---|---|---|---|
+| `crtsh` | Subdomínios via Certificate Transparency | Não | `crt.sh` + fallback HackerTarget |
 
-##**Contato**
-linkedin: https://www.linkedin.com/in/matheus-aguiar3/
+> **Atenção:** a fonte `google` faz scraping de HTML. Isso pode violar
+> os Termos de Serviço e ser bloqueado. Use com moderação.
 
-x(twitter): https://x.com/_yaguarete
+> **Sobre subdomínios:** o `crtsh` só encontra subdomínios que já tiveram
+> certificado SSL emitido. Subdomínios cobertos por certificado wildcard
+> (`*.exemplo.com`) não aparecem.
 
-Quer sugerir uma melhoria?  
-Me chama no twitter(x) :)
+## Testes
 
-## Aviso Legal
+    pip install -e ".[dev]"
+    pytest tests/ -v
 
-a [onça] é para **fins educacionais e de teste autorizado**.  
-**Não use** em sistemas sem permissão. O uso indevido é de inteira responsabilidade do usuário.
+**69 testes**, cobrindo:
 
-## Sobre
+- `core/` — sanitize, session
+- `sources/` — cada fonte com mock de HTTP
+- `output/` — JSON e TXT com arquivos temporários
+- `cli/` — argumentos, filtros, fallback entre fontes
+
+## Limitações conhecidas
+
+- `google` faz scraping e pode ser bloqueado
+- `crtsh` pode retornar 502 ocasionalmente (o banco dele atualiza devagar)
+- Subdomínios cobertos por wildcard não aparecem
+- Sem CI ainda (planejado)
+- Sem cobertura de código (planejado)
+
+## Aviso legal
+
+ONÇA é destinada a **fins educacionais e de teste autorizado**.
+**Não use** em sistemas sem permissão explícita. O uso indevido é de
+inteira responsabilidade do usuário.
+
+## Licença
+
+MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Contato
+
+- LinkedIn: https://www.linkedin.com/in/matheus-aguiar3/
+- X: https://x.com/_yaguarete
 
 projeto criado por **yaguarete** para auxiliar no mapeamento de superfície de aplicações web e estudos em cibersegurança.
